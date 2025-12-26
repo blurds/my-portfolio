@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HashLink } from "react-router-hash-link";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -15,64 +16,64 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-background/80 backdrop-blur-lg border-b border-border/50 py-4" 
+        isScrolled
+          ? "bg-background/80 backdrop-blur-lg border-b border-border/50 py-4"
           : "bg-transparent py-6"
       }`}
     >
       <div className="container max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between">
-          <a href="#home" className="font-display text-xl font-bold text-gradient">
+          <HashLink smooth to="#home" className="font-display text-xl font-bold text-gradient">
             JDL
-          </a>
-          
+          </HashLink>
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a 
+              <HashLink
                 key={link.label}
-                href={link.href}
+                smooth
+                to={link.href}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.label}
-              </a>
+              </HashLink>
             ))}
           </div>
-          
+
           {/* Mobile Menu Button */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
+          <Button
+            variant="ghost"
+            size="icon"
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
         </div>
-        
+
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a 
+                <HashLink
                   key={link.label}
-                  href={link.href}
+                  smooth
+                  to={link.href}
                   className="text-muted-foreground hover:text-primary transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </HashLink>
               ))}
             </div>
           </div>
