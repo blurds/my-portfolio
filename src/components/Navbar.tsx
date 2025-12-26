@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { label: "Home", href: "#" },
+  { label: "Home", href: "#home" },
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
@@ -32,7 +32,7 @@ const Navbar = () => {
     >
       <div className="container max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="font-display text-xl font-bold text-gradient">
+          <a href="#home" className="font-display text-xl font-bold text-gradient">
             JDL
           </a>
           
