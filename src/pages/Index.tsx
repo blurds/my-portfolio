@@ -22,11 +22,25 @@ const Index = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <main>
-          <Hero />
-          <Experience />
-          <Skills />
-          <Education />
-          <Contact />
+          <section id="home">
+            <Hero />
+          </section>
+
+          <section id="experience">
+            <Experience />
+          </section>
+
+          <section id="skills">
+            <Skills />
+          </section>
+
+          <section id="education">
+            <Education />
+          </section>
+
+          <section id="contact">
+            <Contact />
+          </section>
         </main>
         <Footer />
       </div>
